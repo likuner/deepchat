@@ -1,0 +1,23 @@
+# 环境变量与密钥（严禁提交）
+backend/.env
+.env
+.env.*
+!.env.example
+
+# WorkBuddy 本地记忆/会话（含部署凭据、密钥提示等敏感信息，严禁提交）
+.workbuddy/
+
+# Python
+__pycache__/
+*.pyc
+backend/.venv/
+backend/chat.db
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/tsconfig.tsbuildinfo
+frontend/*.tsbuildinfo
+
+# 系统与部署
+.DS_Store

@@ -1,0 +1,22 @@
+# DeepChat FastAPI 后端服务 (uvicorn :8000)
+# 部署到 /etc/systemd/system/deepchat-backend.service
+
+[Unit]
+Description=DeepChat FastAPI Backend (uvicorn)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/deepchat/backend
+Environment=PYTHONUNBUFFERED=1
+# DeepSeek API Key 等配置从 /opt/deepchat/backend/.env 加载（文件缺失仅警告，不影响启动）
+EnvironmentFile=/opt/deepchat/backend/.env
+# 启动命令：使用项目内虚拟环境
+ExecStart=/opt/deepchat/backend/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
